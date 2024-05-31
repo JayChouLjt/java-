@@ -1,0 +1,7 @@
+启动Nginx、redis，后端部署music-server并启动，访问localhost:8080进入管理端主页面，访问localhost:8081进入客户端主页面
+
+需要导入data中的musql.sql文件到数据库
+
+
+注意nginx不能放在中文目录下
+

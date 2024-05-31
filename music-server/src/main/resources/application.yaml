@@ -1,0 +1,45 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active: dev
+  application:
+    name: music-service
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password: 13520
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+  jackson:
+    time-zone: GMT+8
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+      logic-delete-field: isDeleted  #全局逻辑删除的实体字段名,since3.3.0指定后可忽略字段逻辑注解
+#      logic-delete-field: ""  # 将逻辑删除字段设置为空字符串，关闭逻辑删除功能
+      logic-delete-value: 1 #逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 #逻辑未删除值(默认为 0)
+
+swagger:
+  enabled: true
+logging:
+  level:
+    com.train: debug
+  file:
+    path: "logs/${spring.application.name}"
+
